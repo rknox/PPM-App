@@ -27,34 +27,43 @@ foreach($employee as $emp){
 	echo '</label>';
 	echo'</div>';
 	echo '<div class="row">';
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-			'name'=>'EmployeeSchedule'.$counter.'[start_date]',
-			//'attribute'=>'start_date',
-			'model'=>$emp,
-			'language'=>'no',
-			'mode'=>'focus',
-			'dateFormat'=>'yy-m-d',
-	       	'value'=>$emp->start_date,
-            'fontSize'=>'0.8em',
-            'htmlOptions'=>array('size'=>8,'class'=>'date'),
-	)
-
-	);
+	$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		'name'=>'EmployeeSchedule'.$counter.'[start_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 8,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+            'timeFormat' => 'hh:mm:ss',
+    	   'showAnim'=>'fold',
+   		    ),
+   		 )
+	 );
 	echo '<b> to </b>';
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-			'name'=>'EmployeeSchedule'.$counter.'[end_date]',
-			//'attribute'=>'end_date',
-			'model'=>$emp,
-			'language'=>'no',
-			'mode'=>'focus',
-			'dateFormat'=>'yy-m-d',
-			'value'=>$emp->end_date,
-			'fontSize'=>'0.8em',
-			'htmlOptions'=>array('size'=>8,'class'=>'date'),
-	)
-	);
+		$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		'name'=>'EmployeeSchedule'.$counter.'[end_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 9,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,	
+			'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+            'timeFormat' => 'hh:mm:ss',
+     		'showAnim'=>'fold',
+    	    ),
+   		 )
+   	 );
 	echo '<input type="checkbox" name="EmployeeSchedule'.$counter.'[delete]" value="delete" />delete';
 	echo '</div>';
 	echo '<br />';
@@ -74,32 +83,48 @@ foreach($hardware as $hard){
 	echo '</label>';
 	echo'</div>';
 	echo '<div class="row">';
-$this->widget('application.extensions.jui.EDatePicker',
-	array(
-                    'name'=>'HardwareSchedule'.$counter.'[start_date]',
-	              	//'attribute'=>'start_date',
-	              	'model'=>$hard,
-                    'language'=>'no',
-                    'mode'=>'focus',
-                    'dateFormat'=>'yy-m-d',
-	             	'value'=>$hard->start_date,
-                    'fontSize'=>'0.8em',
-                    'htmlOptions'=>array('size'=>8,'class'=>'date'),
-	)
-	);
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-                    'name'=>'HardwareSchedule'.$counter.'[end_date]',
-	              	//'attribute'=>'end_date',
-	              	'model'=>$hard,
-                    'language'=>'no',
-                    'mode'=>'focus',
-                    'dateFormat'=>'yy-m-d',
-	             	'value'=>$hard->end_date,
-                    'fontSize'=>'0.8em',
-                    'htmlOptions'=>array('size'=>8,'class'=>'date'),
-	)
-	);
+
+	$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		'name'=>'HardwareSchedule'.$counter.'[start_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 8,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+                'timeFormat' => 'hh:mm:ss',
+	
+       'showAnim'=>'fold',
+
+    	    ),
+   		 )
+   	 );
+	echo '<b> to </b>';
+		$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		'name'=>'HardwareSchedule'.$counter.'[end_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 9,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+                'timeFormat' => 'hh:mm:ss',
+	
+       'showAnim'=>'fold',
+
+    	    ),
+   		 )
+   	 );
 	echo '<input type="checkbox" name="HardwareSchedule'.$counter.'[delete]" value="delete" />delete';
 	echo '</div>';
 	$counter++;
@@ -117,34 +142,48 @@ foreach($facility as $fac){
 	echo '</label>';
 	echo'</div>';
 	echo '<div class="row">';
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-                    'name'=>'FacilitiesSchedule'.$counter.'[start_date]',
-	              	//'attribute'=>'start_date',
-	              	'model'=>$fac,
-                    'language'=>'no',
-                    'mode'=>'focus',
-                    'dateFormat'=>'yy-m-d',
-	             	'value'=>$fac->start_date,
-                    'fontSize'=>'0.8em',
-                    'htmlOptions'=>array('size'=>8,'class'=>'date'),
+	
+	$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		  'name'=>'FacilitiesSchedule'.$counter.'[start_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 8,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+                'timeFormat' => 'hh:mm:ss',
+	
+       'showAnim'=>'fold',
 
-	)
-	);
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-                    'name'=>'FacilitiesSchedule'.$counter.'[end_date]',
-	              	//'attribute'=>'end_date',
-	              	'model'=>$fac,
-                    'language'=>'no',
-                    'mode'=>'focus',
-                    'dateFormat'=>'yy-m-d',
-	             	'value'=>$fac->end_date,
-                    'fontSize'=>'0.8em',
-                    'htmlOptions'=>array('size'=>8,'class'=>'date'),
+    	    ),
+   		 )
+   	 );
 
-	)
-	);
+	$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		'name'=>'FacilitiesSchedule'.$counter.'[end_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 9,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+                'timeFormat' => 'hh:mm:ss',
+	
+       'showAnim'=>'fold',
+
+    	    ),
+   		 )
+   	 );
 	echo '<input type="checkbox" name="FacilitiesSchedule'.$counter.'[delete]" value="delete" />delete(Klappt nicht bei mehreren?)';
 	echo '</div>';
 	$counter++;
@@ -161,34 +200,48 @@ foreach($customResources as $cus){
 	echo '</label>';
 	echo'</div>';
 	echo '<div class="row">';
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-                    'name'=>'CustomResources'.$counter.'[start_date]',
-	              	//'attribute'=>'start_date',
-	              	'model'=>$cus,
-                    'language'=>'no',
-                    'mode'=>'focus',
-                    'dateFormat'=>'yy-m-d',
-	             	'value'=>$cus->start_date,
-                    'fontSize'=>'0.8em',
-                    'htmlOptions'=>array('size'=>8,'class'=>'date'),
 
-	)
-	);
-	$this->widget('application.extensions.jui.EDatePicker',
-	array(
-                    'name'=>'CustomResources'.$counter.'[end_date]',
-	              	//'attribute'=>'end_date',
-	              	'model'=>$cus,
-                    'language'=>'no',
-                    'mode'=>'focus',
-                    'dateFormat'=>'yy-m-d',
-	             	'value'=>$cus->end_date,
-                    'fontSize'=>'0.8em',
-                    'htmlOptions'=>array('size'=>8,'class'=>'date'),
+		$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		  'name'=>'CustomResources'.$counter.'[start_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 8,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+                'timeFormat' => 'hh:mm:ss',
+	
+       'showAnim'=>'fold',
 
-	)
-	);
+    	    ),
+   		 )
+   	 );
+
+	$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
+   		'name'=>'CustomResources'.$counter.'[end_date]',
+   		'model'=>$emp,
+   		'value'=>$emp->start_date,
+        'htmlOptions'=>array('size'=>18,'class'=>'date'),
+    	'options'=>array(
+    	    'hourGrid' => 4,
+     	   'hourMin' => 9,
+     	   'hourMax' => 18,
+     	   'timeFormat' => 'h:m',
+     	   'changeMonth' => true,
+     	   'changeYear' => false,
+			'dateFormat'=>'yy-mm-dd',
+                'timeFormat' => 'hh:mm:ss',
+	
+       'showAnim'=>'fold',
+
+    	    ),
+   		 )
+   	 );
 	echo '<input type="checkbox" name="CustomResources'.$counter.'[delete]" value="delete" />delete(Klappt nicht bei mehreren?)';
 	echo '</div>';
 	$counter++;

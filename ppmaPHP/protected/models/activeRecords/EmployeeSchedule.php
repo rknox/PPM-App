@@ -91,7 +91,6 @@ class EmployeeSchedule extends CActiveRecord{
 		//  - CHECK WETHER EMPLOYEE IS $booked FOR $date
 		//  -ASSIGN RESOURCE_ID IF POSSIBLE
 		$id = EmployeeSchedule::getResourceId($name, $resourceDb);
-
 		if((EmployeeSchedule::isEmployeeBookable($start, $end, $id)) > 0){
 			$id = 0;
 			$error = Yii::app()->clientScript;
