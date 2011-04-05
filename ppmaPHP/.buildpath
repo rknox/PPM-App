@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path=""/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry external="true" kind="lib" path="/home/raphael/php/yii-1.1.4.r2429"/>
+	<buildpathentry external="true" kind="lib" path="/var/www/w0/yii-1.1.4.r2429"/>
+	<buildpathentry external="true" kind="lib" path="/Users/hans/Sites/w0/yii-1.1.4.r2429"/>
+</buildpath>
