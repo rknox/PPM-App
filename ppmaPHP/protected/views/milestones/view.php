@@ -1,7 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Milestones'=>array('index'),
-	$model->name,
+
 );
 
 $this->menu=array(
@@ -11,12 +10,11 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Milestones #<?php echo $model->id; ?></h1>
+<h1>View Milestone "<?php echo $model->name; ?>"</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'name',
 		'start_date',
 		'end_date',
 		array(

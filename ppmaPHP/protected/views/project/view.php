@@ -53,10 +53,6 @@ foreach ($model->members as $member){
 	echo '- ' .$member->firstname . ' ' . $member->name  . '<br />';
 }
 
-foreach ($model->milestones as $ms){
-	echo '- ' .$ms->name.'<br />';
-}
-
 $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$milestones,
 	'columns'=>array(

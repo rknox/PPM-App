@@ -6,10 +6,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Milestones', 'url'=>array('index')),
-	array('label'=>'Create Milestones', 'url'=>array('create')),
-	array('label'=>'View Milestones', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Milestones', 'url'=>array('admin')),
+	array('label'=>'Back to Project', 'url'=>array('project/view', 'id'=>$model->pid)),
 );
 ?>
 

@@ -2463,3 +2463,19 @@ Stack trace:
 #1 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
 #2 /var/www/w0/PPM-App/ppmaPHP/index.php(17): CApplication->run()
 #3 {main} REQUEST_URI=/w0/PPM-App/ppmaPHP/projects/view/id/4
+2011/04/06 17:58:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /var/www/w0/PPM-App/ppmaPHP/protected/controllers/ProjectController.php:15
+Stack trace:
+#0 /var/www/w0/PPM-App/ppmaPHP/protected/controllers/project/ViewAction.php(43): ProjectController->loadModel(NULL)
+#1 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CController.php(300): ViewAction->run()
+#2 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(ViewAction))
+#3 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#4 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CController.php(1049): CFilter->filter(Object(CFilterChain))
+#5 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#6 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CController.php(257): CController->runActionWithFilters(Object(ViewAction), Array)
+#9 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): CController->run('view')
+#10 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController('project/view/0[...')
+#11 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /var/www/w0/PPM-App/ppmaPHP/index.php(17): CApplication->run()
+#13 {main} REQUEST_URI=/w0/PPM-App/ppmaPHP/project/view/0%5Bid%5D

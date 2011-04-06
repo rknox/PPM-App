@@ -5,8 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Milestones', 'url'=>array('index')),
-	array('label'=>'Manage Milestones', 'url'=>array('admin')),
+	array('label'=>'Back to Project', 'url'=>array('project/view', 'id'=>$model->pid)),
 );
 ?>
 
