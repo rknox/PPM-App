@@ -65,7 +65,8 @@ class Project extends CActiveRecord
 		return array(
 			'ownerObj'=>array(self::BELONGS_TO, 'User', 'owner'),
 			'members'=>array(self::MANY_MANY, 'User', 
-                    'projectMember(pid, uid)')
+                    'projectMember(pid, uid)'),
+			'milestones'=>array(self::HAS_MANY, Milestones, 'pid'),
 		);
 	}
 
@@ -116,12 +117,11 @@ class Project extends CActiveRecord
 		));
 	}
 
-	public function encodeProperty($property){
+	public static function encodeProperty($property){
 		$counter = 1;
 		$connection=Yii::app()->db;
 		$sql = "SELECT name FROM ".$property;
-		$sqlQuery = $connection->createCommand($sql);
-		$dataReader = $sqlQuery->query();
+		$dataReader = $connection->createCommand($sql)->query();
 
 		foreach($dataReader as $row => $value) {
 			foreach ($value as $key => $status){
