@@ -5,11 +5,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Milestones', 'url'=>array('index')),
-	array('label'=>'Create Milestones', 'url'=>array('create')),
+	array('label'=>'Back to Project', 'url'=>array('project/view', 'id'=>$model->pid)),
 	array('label'=>'Update Milestones', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Milestones', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Milestones', 'url'=>array('admin')),
 );
 ?>
 

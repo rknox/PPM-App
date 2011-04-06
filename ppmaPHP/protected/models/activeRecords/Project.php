@@ -66,7 +66,8 @@ class Project extends CActiveRecord
 			'ownerObj'=>array(self::BELONGS_TO, 'User', 'owner'),
 			'members'=>array(self::MANY_MANY, 'User', 
                     'projectMember(pid, uid)'),
-			'milestones'=>array(self::HAS_MANY, Milestones, 'pid'),
+			'milestones'=>array(self::HAS_MANY, Milestones, 'pid',
+									'order'=>'milestones.start_date ASC',),
 		);
 	}
 

@@ -67,7 +67,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 		'start_date',
 		'end_date',
-		'status',
+		array(
+			'name'=>'Status',
+			'value'=>'CHtml::encode($data->getStatusText())',
+		),
 	)
 ));
 echo "<br />";

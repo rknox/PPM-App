@@ -36,8 +36,7 @@ $this->menu=array(
 			'value'=>'CHtml::link("Delete","#",array("submit"=>array("resources/deleteResource","type"=>"Employees", "id"=>$data->id),"confirm"=>"are you sure?"))',
 			),
 	)
-));
-													
+));													
  ?>
 <br />
 <h3>Hardware</h3>

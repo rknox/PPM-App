@@ -2457,3 +2457,9 @@ Stack trace:
 #13 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
 #14 /var/www/w0/PPM-App/ppmaPHP/index.php(17): CApplication->run()
 #15 {main} REQUEST_URI=/w0/PPM-App/ppmaPHP/milestones/view/id
+2011/04/06 13:00:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects/view/id/4".' in /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CWebApplication.php:328
+Stack trace:
+#0 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController('projects/view/i...')
+#1 /var/www/w0/PPM-App/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#2 /var/www/w0/PPM-App/ppmaPHP/index.php(17): CApplication->run()
+#3 {main} REQUEST_URI=/w0/PPM-App/ppmaPHP/projects/view/id/4
