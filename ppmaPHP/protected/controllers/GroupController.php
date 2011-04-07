@@ -1,4 +1,5 @@
 <?php
+
 class GroupController extends Controller{
 	
 	public function GroupController()
@@ -15,7 +16,13 @@ class GroupController extends Controller{
 			'update' 	=> $path.'UpdateAction',
 			'list' 		=> $path.'ListAction',
 			'view' 		=> $path.'ViewAction',
+			'deleteMember' => $path.'DeleteMemberAction'
 		);
+	}
+	
+	public function loadModel($id){
+		$group = Group::model()->findByPk($id);
+		return $group;
 	}
 	
 	public function filters()

@@ -34,7 +34,7 @@ class ProjectController extends Controller{
 		'list'=>'application.controllers.project.ListAction',
 		'view'=>'application.controllers.project.ViewAction',
 		'vote'=>'application.controllers.project.VoteAction',
-		'manageMembers'=>'application.controllers.project.ManageMembersAction',
+		'deleteGroup'=>'application.controllers.project.DeleteGroupAction',
 		);
 	}
 	
