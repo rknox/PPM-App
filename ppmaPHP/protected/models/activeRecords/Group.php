@@ -34,7 +34,7 @@ class Group extends CActiveRecord
 			);
 		}
 		
-		public function getMembers($gid){
+		public static function getMembers($gid){
 			$sql = "SELECT user.id, user.name, user.firstname FROM user, user2group, groups 
 			WHERE user2group.gid = :gid
 			AND  user.id = user2group.uid
@@ -61,6 +61,11 @@ class Group extends CActiveRecord
 			$sqlQuery = Yii::app()->db->createCommand($sql);
 			
 			$tempRes[] = $sqlQuery->execute();
+		}
+		
+		public static function hasMember($gid, $user){
+			getMembers($gid);
+			return true;
 		}
 		
 		public function search()

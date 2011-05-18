@@ -51,7 +51,7 @@ class ProjectController extends Controller{
     		array('allow',
             	'actions'=>array('create', 'delete', 'update', 'list'),
                 'users'=>array('@'),
-    			'expression'=>'(Yii::app()->user->object->hasAccsess(Array(\'user\', \'admin\')))',
+    			'expression'=>'(Yii::app()->user->object->hasAccsess(Array(1, 2)))',
             ),
     		array('deny',
                 'actions'=>array('create', 'delete', 'update', 'list'),

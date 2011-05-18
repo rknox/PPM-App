@@ -16,7 +16,6 @@ $this->menu=array(
 <h1>View Group <?php echo $model->name; ?></h1>
 
 <?php 
-	
 	if(isset($_POST['del_uid'])){
 		$model->deleteMember($model->id, $_POST['del_uid']);
 	}
@@ -50,23 +49,25 @@ $this->menu=array(
 			),
 		),
 	));
-	echo('<br/><h2>add Member</h2>');
-	$users = User::model()->findAll();
-	$names = array();
-	
-	foreach ($users as $user){
-		$tr = true;
-		foreach ($members as $d){
-			if($user->id==$d['id']){
-				$tr=false;
+	if(Group->hasMember($gid, $user)){
+		echo('<br/><h2>add Member</h2>');
+		$users = User::model()->findAll();
+		$names = array();
+		
+		foreach ($users as $user){
+			$tr = true;
+			foreach ($members as $d){
+				if($user->id==$d['id']){
+					$tr=false;
+				}
+			}
+			if($tr){
+				$names[$user->id]=$user->firstname . ' ' . $user->name;
 			}
 		}
-		if($tr){
-			$names[$user->id]=$user->firstname . ' ' . $user->name;
-		}
+		echo CHtml::beginForm();
+		echo CHtml::dropDownList('add_uid', $select, $names);
+	    echo CHtml::submitButton('add', array('submit' => array('group/view/id/'. $model->id,)));
+	    echo CHtml::endForm();
 	}
-	echo CHtml::beginForm();
-	echo CHtml::dropDownList('add_uid', $select, $names);
-    echo CHtml::submitButton('add', array('submit' => array('group/view/id/'. $model->id,)));
-    echo CHtml::endForm();
 	?>
