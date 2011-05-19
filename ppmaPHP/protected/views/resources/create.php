@@ -72,7 +72,7 @@ foreach ($hardware as $key => $value) {
 	$formString = '<div class="row"><label class="required" for="hardware_type">';
 	$formString .= $value;
 	$formString .= ' <span class="required">*</span></label>';
-	$formString .= '<input type="text" name="Hardware'.$counter.'[name]" style="display:none" value="'.$value.'"/>';
+	$formString .= '<input type="text" name="HardwareSchedule'.$counter.'[name]" style="display:none" value="'.$value.'"/>';
 	echo $formString;
 		$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
    		'name'=>'HardwareSchedule'.$counter.'[start_date]',
@@ -126,7 +126,7 @@ foreach ($facilities as $key => $value) {
 	$formString = '<div class="row"><label class="required" for="hardware_type">';
 	$formString .= $value;
 	$formString .= ' <span class="required">*</span></label>';
-	$formString .= '<input type="text" value="'.$value.'" name="Facilities'.$counter.'[name]" style="display:none" />';
+	$formString .= '<input type="text" value="'.$value.'" name="FacilitiesSchedule'.$counter.'[name]" style="display:none" />';
 	echo $formString;
 	$this->widget('application.extensions.timepicker.EJuiDateTimePicker',array(
    		  'name'=>'FacilitiesSchedule'.$counter.'[start_date]',

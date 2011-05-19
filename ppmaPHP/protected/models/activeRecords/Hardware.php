@@ -42,6 +42,7 @@ class Hardware extends CActiveRecord
 			array('name, h_type', 'required'),
 			array('h_type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
+			array('name', 'safe'),
 		);
 	}
 

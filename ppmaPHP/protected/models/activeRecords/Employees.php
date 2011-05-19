@@ -43,6 +43,7 @@ class Employees extends CActiveRecord
 		array('first_name, name, e_type', 'required'),
 		array('e_type', 'numerical', 'integerOnly'=>true),
 		array('first_name, name', 'length', 'max'=>50),
+		array('name', 'safe'),
 		);
 	}
 
