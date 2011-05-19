@@ -15,14 +15,15 @@ $this->menu=array(
 <table>
 <?php 
 
-	$members = $model->members;
+	$members = Project::model()->getGroups($model->id);
+	$members = $members[0];
 	
 	foreach ($members as $member) {
 		?>
 			<tr>
 				<td>
 		<?php
-		echo $member->firstname .' '.$member->name; 
+		echo $member['name'] .' '.$member->name; 
 		?>
 				</td>
 				<td>

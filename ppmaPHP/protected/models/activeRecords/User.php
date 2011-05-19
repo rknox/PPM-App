@@ -30,11 +30,13 @@ class User extends CActiveRecord{
 		);
 	}
 	
-	public function hasAccsess($groupnames){
-		foreach ($groupnames as $groupname){
-			$group = Group::model()->findByAttributes(array('name'=>$groupname));
-			if($this->gid&$group->id)
-				return true;
+	public function hasAccsess($gids){
+		foreach ($gids as $gid){
+			$members = Group::getMembers($gid);
+			foreach ($members[0] as $member){
+				if($this->id&$member['id'])
+					return true;
+			}
 		}
 		return false;
 	}
@@ -72,7 +74,7 @@ class User extends CActiveRecord{
 		$sql = 'SELECT name FROM user WHERE id = '.$id;
 		$data = Yii::app()->db->createCommand($sql)->queryColumn();
 		return $data[0];
-	}
+	} 
 	
 
 }

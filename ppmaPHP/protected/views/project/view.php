@@ -48,11 +48,11 @@ echo '<br />';
 
 echo '<b>Members</b><br />';
 
-
-foreach ($model->members as $member){
-	echo '- ' .$member->firstname . ' ' . $member->name  . '<br />';
+if(isset($_POST['add_gid'])){
+	$model->addGroup($model->id, $_POST['add_gid'], $_POST['add_type']);
 }
 
+<<<<<<< HEAD
 $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$milestones,
 	'columns'=>array(
@@ -69,6 +69,54 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 	)
 ));
+=======
+$members = Project::model()->getGroups($model->id);
+$members = $members[0];
+
+$dataProvider=new CArrayDataProvider($members);
+
+$this->widget('zii.widgets.grid.CGridView', array(
+	'dataProvider'=>$dataProvider,
+	'columns'=>array(
+		'name',
+		array(
+			'type'=>'raw',
+			'value'=>'CHtml::dropDownList("listname", $data[type], 
+              array("0" => "read", "1" => "write"))'
+		),
+		array(
+			'type'=>'raw',
+			'value'=>'CHtml::submitButton("Delete", array("submit" => array("project/deleteGroup/id/'. $model->id .'/gid/$data[id]")))',
+		),
+	),
+));
+
+echo('<br/><h2>add Group</h2>');
+	$groups = Group::model()->findAll();
+	$names = array();
+	
+	foreach ($groups as $group){
+		$tr = true;
+		foreach ($members as $d){
+			if($group->id==$d['id']){
+				$tr=false;
+			}
+		}
+		if($tr){
+			$names[$group->id]=$group->name;
+		}
+	}
+	
+	echo CHtml::beginForm();
+	echo CHtml::dropDownList('add_gid', $select, $names);
+	echo CHtml::dropDownList('add_type', $select, array(
+		'0'=>'read',
+		'1'=>'write(and read)',
+	));
+    echo CHtml::submitButton('add', array('submit' => array('project/view/id/'. $model->id,)));
+    echo CHtml::endForm();
+
+>>>>>>> f9e2b9f2a74f9dfc966189d22d3fdba049b375b5
 echo "<br />";
 
 $this->widget('zii.widgets.grid.CGridView', array(

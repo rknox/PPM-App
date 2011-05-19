@@ -6,15 +6,15 @@ class UpdateAction extends CAction
 		$controller = $this->controller;
 		$model=$controller->loadModel($_GET['id']);
 
-		if(isset($_POST['Project']))
+		if(isset($_POST['Group']))
 		{
-			$model->attributes=$_POST['Project'];
+			$model->attributes=$_POST['Group'];
 			if($model->save()){
-				$controller->redirect(array('view','id'=>$model->id));
+				$controller->redirect(array('group/view','id'=>$model->id));
 			}
 		}
 
-		$controller->render('project/update',array(
+		$controller->render('group/update',array(
 			'model'=>$model,
 		));
 

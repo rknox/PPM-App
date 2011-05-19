@@ -19,7 +19,10 @@
  * The followings are the available model relations:
  */
 class Project extends CActiveRecord
-{
+{	
+	public static $READ = 0;
+	public static $WRITE = 1;
+	
 	public $categoryTable = 'categories';
 	public $statusTable  = 'statuses';
 	public $memberTable = 'projectMember';
@@ -186,6 +189,40 @@ class Project extends CActiveRecord
 			return true;
 		}
 		return false;
+	}
+	
+	public static function addGroup($pid, $gid, $type){
+		$sql = "INSERT INTO group2project VALUES($gid , $pid, $type )";
+		$sqlQuery = Yii::app()->db->createCommand($sql);
+			
+		$tempRes[] = $sqlQuery->execute();
+	}
+	
+	
+	public function getGroups($pid){
+			$sql = "SELECT groups.id, groups.name, group2project.type FROM groups, group2project, projects 
+			WHERE group2project.pid = :pid
+			AND  groups.id = group2project.gid
+			GROUP BY groups.id";
+			$sqlQuery = Yii::app()->db->createCommand($sql);
+			$sqlQuery->bindValue(":pid", $pid, PDO::PARAM_INT);
+			
+			$tempRes[] = $sqlQuery->queryAll();
+			return $tempRes;		
+	}
+	
+	public function deleteGroup($pid, $gid){
+			$sql = "DELETE FROM group2project WHERE gid = :gid AND pid = :pid";
+			$sqlQuery = Yii::app()->db->createCommand($sql);
+			$sqlQuery->bindValue(":gid", $gid, PDO::PARAM_INT);
+			$sqlQuery->bindValue(":pid", $pid, PDO::PARAM_INT);
+			
+			$tempRes[] = $sqlQuery->execute();
+	}
+	
+	public function updateGroupRight($pid, $gid, $type){
+			$this->deleteGroup($pid, $gid);
+			$this->addGroup($pid, $gid, $type);
 	}
 	
 	public static function getMember($pid){

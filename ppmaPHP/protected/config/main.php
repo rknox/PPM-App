@@ -10,7 +10,7 @@ return array(
 	'name'=>'PPM Application',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	//'preload'=>array('log'),
 	
 	//default controller
 	'defaultController'=>'auth',
