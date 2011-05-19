@@ -30,4 +30,4 @@ class ListAction extends CAction
 		));
 	}
 
-}
+} 
