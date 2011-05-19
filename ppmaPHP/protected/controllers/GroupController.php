@@ -1,4 +1,5 @@
 <?php
+
 class GroupController extends Controller{
 	
 	public function GroupController()
@@ -15,7 +16,13 @@ class GroupController extends Controller{
 			'update' 	=> $path.'UpdateAction',
 			'list' 		=> $path.'ListAction',
 			'view' 		=> $path.'ViewAction',
+			'deleteMember' => $path.'DeleteMemberAction'
 		);
+	}
+	
+	public function loadModel($id){
+		$group = Group::model()->findByPk($id);
+		return $group;
 	}
 	
 	public function filters()
@@ -27,11 +34,12 @@ class GroupController extends Controller{
     
     public function accessRules()
     {
+    	print_r(Yii::app()->user->object);
     	return array(
-    		array('allow',
+            array('allow',
             	'actions'=>array('create', 'delete', 'update', 'list'),
                 'users'=>array('@'),
-    			'expression'=>'(Yii::app()->user->object->hasAccsess(Array(\'admin\')))',
+    			'expression'=>'(Yii::app()->user->object->hasAccsess(Array(1)))',
             ),
     		array('deny',
                 'actions'=>array('create', 'delete', 'update', 'list'),

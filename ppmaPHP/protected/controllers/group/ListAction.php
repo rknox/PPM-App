@@ -7,8 +7,8 @@ class ListAction extends CAction
 		
 		$controller = $this->controller;
 		
-		$dataProvider=new CActiveDataProvider('Project');
-		$controller->render('project/list',array(
+		$dataProvider=new CActiveDataProvider('Group');
+		$controller->render('group/list',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
