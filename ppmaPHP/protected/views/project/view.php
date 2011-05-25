@@ -52,7 +52,7 @@ if(isset($_POST['add_gid'])){
 	$model->addGroup($model->id, $_POST['add_gid'], $_POST['add_type']);
 }
 
-<<<<<<< HEAD
+
 $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$milestones,
 	'columns'=>array(
@@ -69,7 +69,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 	)
 ));
-=======
+
 $members = Project::model()->getGroups($model->id);
 $members = $members[0];
 
@@ -116,7 +116,6 @@ echo('<br/><h2>add Group</h2>');
     echo CHtml::submitButton('add', array('submit' => array('project/view/id/'. $model->id,)));
     echo CHtml::endForm();
 
->>>>>>> f9e2b9f2a74f9dfc966189d22d3fdba049b375b5
 echo "<br />";
 
 $this->widget('zii.widgets.grid.CGridView', array(
