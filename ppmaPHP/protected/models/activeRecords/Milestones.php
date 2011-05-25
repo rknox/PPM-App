@@ -88,7 +88,7 @@ class Milestones extends CActiveRecord
 	public static function checkForDeadlines(){
 		$today = date("Y-m-d");
 		$tomorrow = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+3, date("y")));
-		$sql = "SELECT p.id as pid, p.name as projekt, m.id as mid, m.name as milestone FROM projects p join milestones m on p.id = m.pid where m.end_date >= '".$today."' AND m.end_date <= '".$tomorrow."'";
+		$sql = "SELECT p.id as pid, p.name as project, m.id as mid, m.name as milestone, m.end_date as end_date FROM projects p join milestones m on p.id = m.pid where m.end_date >= '".$today."' AND m.end_date <= '".$tomorrow."'";
 		$sqlQuery = Yii::app()->db->createCommand($sql);
 		$data = $sqlQuery->queryAll();
 		return $data;

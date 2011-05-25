@@ -18,7 +18,7 @@ class ListAction extends CAction
 					$p[$i] = $value;
 					$i++;
 				}
-				$s .= 'Projekt: <a href ="project/'.$p[0].'">'.$p[1].'</a> Milestone: <a href="milestones/view/id/'.$p[2].'">'.$p[3].'</a><br />';
+				$s .= 'Projekt: <a href ="project/'.$p[0].'">'.$p[1].'</a> Milestone: <a href="milestones/view/id/'.$p[2].'">'.$p[3].'</a> ('.$p[4].')<br />';
 			}
 			$s .= '</div>';
 			Yii::app()->user->setFlash('deadline-milestone', $s );
