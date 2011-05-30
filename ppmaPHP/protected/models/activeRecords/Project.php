@@ -190,16 +190,35 @@ class Project extends CActiveRecord
 		return false;
 	}
 	
-	public static function addGroup($pid, $gid, $type){
-		$sql = "INSERT INTO group2project VALUES($gid , $pid, $type )";
+	public static function addGroup($pid, $gid, $types){
+		$sql = "INSERT INTO group2project(gid, pid) VALUES($gid , $pid)";
 		$sqlQuery = Yii::app()->db->createCommand($sql);
 			
 		$tempRes[] = $sqlQuery->execute();
+		
+		$sql = "SELECT aid FROM group2project where pid = :pid AND gid = :gid";
+		$sqlQuery = Yii::app()->db->createCommand($sql);
+		$sqlQuery->bindValue(":gid", $gid, PDO::PARAM_INT);
+		$sqlQuery->bindValue(":pid", $pid, PDO::PARAM_INT);
+		
+		$tempRes[] = $sqlQuery->queryAll();
+		
+		$aid = $tempRes[1][0]['aid'];
+		
+		$sql = "INSERT INTO project_rights VALUES(:aid, :rid)";
+		
+		foreach($types as $type){
+			$sqlQuery = Yii::app()->db->createCommand($sql);
+			$sqlQuery->bindValue(":aid", $aid, PDO::PARAM_INT);
+			$sqlQuery->bindValue(":rid", $type, PDO::PARAM_INT);
+			$sqlQuery->execute();
+		}
+		
 	}
 	
 	
 	public function getGroups($pid){
-			$sql = "SELECT groups.id, groups.name, group2project.type FROM groups, group2project, projects 
+			$sql = "SELECT groups.id, groups.name FROM groups, group2project, projects 
 			WHERE group2project.pid = :pid
 			AND  groups.id = group2project.gid
 			GROUP BY groups.id";

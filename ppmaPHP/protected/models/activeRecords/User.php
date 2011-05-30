@@ -41,6 +41,14 @@ class User extends CActiveRecord{
 		return false;
 	}
 	
+	public function canRead($gid){
+	
+	}
+	
+	public function canWrite($gid){
+	
+	}
+	
 	public function attributeLabels()
 	{
 		return array(

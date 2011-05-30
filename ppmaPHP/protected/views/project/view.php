@@ -14,7 +14,7 @@ $this->menu=array(
 	array('label'=>'Manage Members', 'url'=>array('project/'.$model->id.'/manageMembers')),
 );
 if(!Project::hasUserVoted(Yii::app()->user->id, $model->id)){
-$this->menu[] = array('label'=>'Vote for Project', 'url'=>array('project/vote', 'id'=>$model->id));
+	$this->menu[] = array('label'=>'Vote for Project', 'url'=>array('project/vote', 'id'=>$model->id));
 }
 
 ?>
@@ -49,7 +49,8 @@ echo '<br />';
 echo '<b>Members</b><br />';
 
 if(isset($_POST['add_gid'])){
-	$model->addGroup($model->id, $_POST['add_gid'], $_POST['add_type']);
+	if(count($_POST['add_type'])>0)
+		$model->addGroup($model->id, $_POST['add_gid'], $_POST['add_type']);
 }
 
 $members = Project::model()->getGroups($model->id);
@@ -91,10 +92,20 @@ echo('<br/><h2>add Group</h2>');
 	
 	echo CHtml::beginForm();
 	echo CHtml::dropDownList('add_gid', $select, $names);
-	echo CHtml::dropDownList('add_type', $select, array(
-		'0'=>'read',
-		'1'=>'write(and read)',
-	));
+	echo '<br />';
+	
+	$sql = "SELECT * FROM rights";
+	$sqlQuery = Yii::app()->db->createCommand($sql);
+		
+	$tempRes[] = $sqlQuery->queryAll();
+		
+	$rightsarr;
+	foreach ($tempRes[0] as $right){
+		$rightsarr[$right['id']]=$right['name'];
+	}
+	
+	echo CHtml::checkBoxList('add_type', $select, $rightsarr);
+	echo '<br />';
     echo CHtml::submitButton('add', array('submit' => array('project/view/id/'. $model->id,)));
     echo CHtml::endForm();
 
