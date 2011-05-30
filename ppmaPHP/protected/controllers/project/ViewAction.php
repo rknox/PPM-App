@@ -41,9 +41,12 @@ class ViewAction extends CAction
 			)
 		);
 		$m = $controller->loadModel($_GET['id']);
+		$milestones = new CArrayDataProvider($m->milestones);
+		
 		$controller->render('project/view',array(
-			'model'=>$controller->loadModel($_GET['id']),	
+			'model'=>$m,	
 			'dataProvider'=>$dataProvider,	
+			'milestones'=>$milestones,
 		));
 
 	}

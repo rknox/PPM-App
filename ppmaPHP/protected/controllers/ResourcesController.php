@@ -109,6 +109,7 @@ class ResourcesController extends Controller
 				if($value['start_date'] != ''){
 					if ($type == 'Empl'){
 						$resource = new EmployeeSchedule;
+						
 						$resource->attributes = $_POST[$key];
 						$resource->employee_id = EmployeeSchedule::findAvailableEmployeeResource(Resources::EMPLOYEE_DB, $resource->start_date, $resource->end_date, $value['name']);
 						$resource->pid = $projectId;
@@ -117,6 +118,7 @@ class ResourcesController extends Controller
 							$resource = null;
 							$resourceAvailable = 0;
 						}
+						
 					}
 					elseif ($type == 'Hard'){
 						$resource = new HardwareSchedule;

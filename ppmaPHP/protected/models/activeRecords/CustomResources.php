@@ -44,10 +44,8 @@ class CustomResources extends CActiveRecord
 		return array(
 			array('name, start_date, end_date, owner, pid', 'required'),
 			array('name', 'length', 'max'=>255),
+			array('name', 'safe'),
 			array('owner, pid', 'length', 'max'=>11),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, name, start_date, end_date, owner, pid', 'safe', 'on'=>'search'),
 		);
 	}
 

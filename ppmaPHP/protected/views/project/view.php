@@ -6,12 +6,12 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Project', 'url'=>array('project')),
-	array('label'=>'Create Project', 'url'=>array('project/create')),
 	array('label'=>'Update Project', 'url'=>array('project/update', 'id'=>$model->id)),
 	array('label'=>'Delete Project', 'url'=>'#', 'linkOptions'=>array('submit'=>array('project/delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'[Take out in final Version] Vote', 'url'=>array('project/vote', 'id'=>$model->id)),
 	array('label'=>'View Resources', 'url'=>array('resources/view', 'id'=>$model->id)),
 	array('label'=>'Manage Members', 'url'=>array('project/'.$model->id.'/manageMembers')),
+	array('label'=>'Add Milestone', 'url'=>array('milestones/create', 'pid'=>$model->id))
 );
 if(!Project::hasUserVoted(Yii::app()->user->id, $model->id)){
 	$this->menu[] = array('label'=>'Vote for Project', 'url'=>array('project/vote', 'id'=>$model->id));
@@ -52,6 +52,24 @@ if(isset($_POST['add_gid'])){
 	if(count($_POST['add_type'])>0)
 		$model->addGroup($model->id, $_POST['add_gid'], $_POST['add_type']);
 }
+
+$members = Project::model()->getGroups($model->id);
+$this->widget('zii.widgets.grid.CGridView', array(
+	'dataProvider'=>$milestones,
+	'columns'=>array(
+		array(
+			'type'=>'raw',
+			'name'=>'Milestones',
+			'value'=>'CHtml::link($data->name, array("/milestones/view", "id"=>$data->id))',
+		),
+		'start_date',
+		'end_date',
+		array(
+			'name'=>'Status',
+			'value'=>'CHtml::encode($data->getStatusText())',
+		),
+	)
+));
 
 $members = Project::model()->getGroups($model->id);
 $members = $members[0];

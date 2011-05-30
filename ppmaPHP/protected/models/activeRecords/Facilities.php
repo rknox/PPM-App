@@ -38,7 +38,7 @@ class Facilities extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'safe'),
+		//	array('name', 'safe'),
 			array('f_type', 'required'),
 			array('f_type', 'length', 'max'=>50),
 		);

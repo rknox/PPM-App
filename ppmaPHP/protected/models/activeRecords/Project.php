@@ -68,7 +68,9 @@ class Project extends CActiveRecord
 		return array(
 			'ownerObj'=>array(self::BELONGS_TO, 'User', 'owner'),
 			'members'=>array(self::MANY_MANY, 'User', 
-                    'projectMember(pid, uid)')
+                    'projectMember(pid, uid)'),
+			'milestones'=>array(self::HAS_MANY, Milestones, 'pid',
+									'order'=>'milestones.start_date ASC',),
 		);
 	}
 
@@ -119,12 +121,11 @@ class Project extends CActiveRecord
 		));
 	}
 
-	public function encodeProperty($property){
+	public static function encodeProperty($property){
 		$counter = 1;
 		$connection=Yii::app()->db;
 		$sql = "SELECT name FROM ".$property;
-		$sqlQuery = $connection->createCommand($sql);
-		$dataReader = $sqlQuery->query();
+		$dataReader = $connection->createCommand($sql)->query();
 
 		foreach($dataReader as $row => $value) {
 			foreach ($value as $key => $status){
@@ -248,5 +249,13 @@ class Project extends CActiveRecord
 		$data = Yii::app()->db->createCommand($sql)->queryColumn();
 		return $data;
 	}
-	
+
+	public static function checkForDeadlines(){
+		$today = date("Y-m-d");
+		$tomorrow = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+3, date("y")));
+		$sql = "SELECT id, name, end_date FROM projects  where end_date >= '".$today."' AND end_date <= '".$tomorrow."'";
+		$sqlQuery = Yii::app()->db->createCommand($sql);
+		$data = $sqlQuery->queryAll();
+		return $data;
+	}
 }
